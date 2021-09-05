@@ -10,7 +10,19 @@ async function getToDos(req, res) {
     }
 }
 
+async function getToDo(req, res) {
+    try {
+        const {id} = req.params;
+        const todo = await ToDo.toDoById(id);
+        if (!todo) res.status(404).send({ message: "ToDo not fount" })
+        else res.send(todo)
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 
 module.exports = {
     getToDos,
+    getToDo,
 }

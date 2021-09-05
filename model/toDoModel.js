@@ -9,8 +9,16 @@ function getToDos() {
     })
 }
 
+function getToDo(id) {
+    return new Promise((resolve, reject) => {
+        let todo = todos.find(p => p.id == id)
+        resolve(todo)
+    })
+}
+
 
 module.exports = {
     toDos: getToDos,
+    toDoById: getToDo,
 
 }
