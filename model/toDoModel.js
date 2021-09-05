@@ -16,9 +16,17 @@ function getToDo(id) {
     })
 }
 
+function createTodo(todo) {
+    return new Promise((resolve, reject) => {
+        todos.push(todo);
+        writeDataToDataBase('data/data.json', todos)
+        resolve(todo);
+    })
+}
+
 
 module.exports = {
     toDos: getToDos,
     toDoById: getToDo,
-
+    createTodo,
 }
