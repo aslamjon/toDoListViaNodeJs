@@ -46,10 +46,23 @@ function updateTodo(id, todo) {
     })
 }
 
+function deleteTodo(id) {
+    return new Promise((resolve, reject) => {
+        const index = todos.findIndex(e => e.id == id);
+        if (!todos[index]) resolve(0);
+        else {
+            todos.splice(index, 1);
+            writeDataToDataBase('./data/data.json', todos);
+            resolve(1);
+        }
+    })
+}
+
 
 module.exports = {
     toDos: getToDos,
     toDoById: getToDo,
     createTodo,
     updateTodo,
+    deleteTodo
 }

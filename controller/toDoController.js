@@ -47,11 +47,18 @@ async function updateTodo(req, res) {
     else res.send(find);
 }
 
+async function deleteTodo(req, res) {
+    const { id } = req.params;
 
+    const del = await ToDo.deleteTodo(id);
+    if (!del) res.status(404).send({ message: "Todo not found" });
+    res.send({ message: "Todo has been deleted"})
+}
 
 module.exports = {
     getToDos,
     getToDo,
     createTodo,
     updateTodo,
+    deleteTodo
 }
