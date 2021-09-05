@@ -1,0 +1,24 @@
+{
+  "name": "todolist",
+  "version": "1.0.0",
+  "description": "toDoList",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aslamjon/toDoListViaNodeJs.git"
+  },
+  "author": "Aslamjon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aslamjon/toDoListViaNodeJs/issues"
+  },
+  "homepage": "https://github.com/aslamjon/toDoListViaNodeJs#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.12",
+    "uuid": "^8.3.2"
+  }
+}
