@@ -58,11 +58,23 @@ function deleteTodo(id) {
     })
 }
 
+function changeStatus(id, status) {
+    return new Promise((resolve, reject) => {
+        const index = todos.findIndex(e => e.id == id);
+        if (!todos[index]) resolve(0);
+        else {
+            todos[index].status = status;
+            writeDataToDataBase('./data/data.json', todos);
+            resolve(todos[index]);
+        }
+    })
+}
 
 module.exports = {
     toDos: getToDos,
     toDoById: getToDo,
     createTodo,
     updateTodo,
-    deleteTodo
+    deleteTodo,
+    changeStatus
 }

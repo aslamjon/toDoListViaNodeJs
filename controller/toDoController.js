@@ -55,10 +55,19 @@ async function deleteTodo(req, res) {
     res.send({ message: "Todo has been deleted"})
 }
 
+async function changeStatus(req, res) {
+    const { id } = req.params;
+    const { status } = req.body;
+    const saveStatuas = await ToDo.changeStatus(id, status);
+    if (!saveStatuas) res.status(404).send({ message: "Todo not found"});
+    else res.send({ message: `Status has been changed to ${status}`})
+}
+
 module.exports = {
     getToDos,
     getToDo,
     createTodo,
     updateTodo,
-    deleteTodo
+    deleteTodo,
+    changeStatus
 }
