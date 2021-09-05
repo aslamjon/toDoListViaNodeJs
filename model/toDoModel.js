@@ -24,9 +24,32 @@ function createTodo(todo) {
     })
 }
 
+function updateTodo(id, todo) {
+    return new Promise((resolve, reject) => {
+        const findTodo = todos.findIndex(p => p.id == id);
+        
+        if (!todos[findTodo]) resolve(todos[findTodo]);
+        else {
+            const {title, description, status, createdAt, priority} = todo;
+            const update = {
+                id,
+                title: title || todos[findTodo].title,
+                description: description || todos[findTodo].description,
+                status: status || todos[findTodo].status,
+                createdAt: createdAt || todos[findTodo].createdAt,
+                priority: priority || todos[findTodo].priority,
+            }
+            todos[findTodo] = update;
+            writeDataToDataBase('./data/data.json', todos);
+            resolve(todos[findTodo])
+        }
+    })
+}
+
 
 module.exports = {
     toDos: getToDos,
     toDoById: getToDo,
     createTodo,
+    updateTodo,
 }

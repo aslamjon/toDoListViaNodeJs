@@ -39,10 +39,19 @@ async function createTodo(req, res) {
     }
 }
 
+async function updateTodo(req, res) {
+    const {id} = req.params;
+    
+    const find = await ToDo.updateTodo(id, req.body);
+    if (!find) res.status(404).send({ message: "ToDo not found" });
+    else res.send(find);
+}
+
 
 
 module.exports = {
     getToDos,
     getToDo,
     createTodo,
+    updateTodo,
 }
